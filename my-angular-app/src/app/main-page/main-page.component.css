@@ -1,0 +1,12 @@
+.main-page {
+  padding: 20px;
+}
+
+.main-page h1 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.main-page p {
+  color: #666;
+}
