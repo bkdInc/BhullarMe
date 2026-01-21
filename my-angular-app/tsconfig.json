@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "target": "ES2022",
     "module": "esnext",
     "lib": ["ES2022", "dom"],
@@ -20,7 +22,8 @@
     "src/polyfills.ts"
   ],
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/**/*.json"
   ],
   "exclude": [
     "node_modules",

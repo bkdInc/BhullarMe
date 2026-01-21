@@ -1,0 +1,19 @@
+Command for Git Push to Git from Terminal
+
+
+Step-by-Step Guide
+Open the Integrated Terminal in VS Code:
+Use the shortcut `Ctrl + `` (Control + backtick) or go to the top menu and select View > Terminal.
+Stage Your Changes:
+This command adds all modified and new files to the staging area, preparing them for a commit.
+bash
+git add .
+Commit Your Changes:
+This command records the staged changes in your local repository's history with a descriptive message.
+bash
+git commit -m "Your descriptive commit message"
+Push to GitHub:
+This command uploads your local commits to the remote repository on GitHub.
+bash
+git push origin main
+

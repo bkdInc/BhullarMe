@@ -1,6 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+     "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "outDir": "./out-tsc/app",
     "types": []
   },
@@ -10,6 +13,7 @@
   ],
   "include": [
     "src/**/*.ts",
-    "src/**/*.d.ts"
+    "src/**/*.d.ts",
+    "src/**/*.json"
   ]
 }

@@ -1,8 +1,25 @@
-  <section id="skills" class="text-center">
+<section id="skills" class="text-center">
         <div class="container">
           <h6 class="section-title">Skills</h6>
           <h1>My skill <span class="green">level</span></h1>
+
             <div class="skills-progress ">
+              <ul>
+                @for (item of items; track item.id) {
+                <li>
+                  <div class="skill-wrapper" [ngClass]="'progress-' + item.value">
+                    <span class="label">{{item.value}}<span class="smaller">%</span></span>
+                    <div class="progress">
+                      <div class="left-side half-circle"></div>
+                      <div class="right-side half-circle"></div>
+                    </div>
+                   <div class="shadow"></div>
+                <span class="skill-name">{{item.name}}</span>
+              </div>
+              </li>
+              }
+              </ul>
+<!-- 
               <div class="skill-wrapper progress-64">
                 <span class="label">64<span class="smaller">%</span></span>
                 <div class="progress">
@@ -12,6 +29,7 @@
                 <div class="shadow"></div>
                 <span class="skill-name">Facebook Marketing</span>
               </div>
+
               <div class="skill-wrapper progress-75">
                 <span class="label">75<span class="smaller">%</span></span>
                 <div class="progress">
@@ -39,6 +57,7 @@
                 <div class="shadow"></div>
                 <span class="skill-name">Youtube Marketing</span>
               </div>
+              -->
             </div>
         </div>
       </section>
