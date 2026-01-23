@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { MainPageComponent } from './main-page/main-page.component';\nexport const routes = [\n//Add your routes here\n// Example:\n{\n  path: '',\n  component: MainPageComponent\n}, {\n  path: 'about',\n  component: AboutComponent\n}];","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
