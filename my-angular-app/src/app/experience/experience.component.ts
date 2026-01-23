@@ -1,9 +1,11 @@
 import { Component } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
 @Component({
   selector: "app-experience",
   templateUrl: "./experience.component.html",
 })
+
 export class ExperienceComponent {
   title: string;
   content: string;

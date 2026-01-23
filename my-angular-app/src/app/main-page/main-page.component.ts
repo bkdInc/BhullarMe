@@ -13,7 +13,7 @@ import { ContactUsComponent } from '../contact-us/contact-us.component';
 @Component({
   selector: "app-main-page",
   standalone: true,
-  imports: [CommonModule, HeaderComponent, AboutComponent, BioComponent,SkillsComponent,ExperienceComponent, FooterComponent],
+  imports: [CommonModule, HeaderComponent, AboutComponent, BioComponent,SkillsComponent,ExperienceComponent,ContactUsComponent, FooterComponent],
   templateUrl: "./main-page.html",
   //styleUrl: "./main-page.component.css", 
 
