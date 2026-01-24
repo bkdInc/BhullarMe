@@ -3,6 +3,15 @@
           <h6 class="section-title">My previous jobs</h6>
           <h1>My <span class="green">experience</span></h1>
           <div class="jobs">
+             @for (item of items; track item.id) {
+              <div class="job-item first">
+              <p class="date">{{item.dateFrom}} - {{item.dateTo}}</p>
+              <p class="position">{{item.position}}</p>
+              <p class="company">{{item.company}}</p>
+              <p>{{item.description}}</p>
+            </div>
+             }
+             <!--
             <div class="job-item first">
               <p class="date">April 2021 - NOW</p>
               <p class="position">Senior Marketing Secialist</p>
@@ -27,6 +36,8 @@
               <p class="company">Economic Platform</p>
               <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
             </div>
+             -->
+
           </div>
         </div>
       </section>
