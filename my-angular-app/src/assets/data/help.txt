@@ -139,10 +139,12 @@ Manual Copying: You can manually copy the files to the new project directory usi
 Template Files: A common and recommended practice is to commit a template version of the file (e.g., sftp.json.example or .env.template) that has generic placeholders [1].
 The template is tracked by Git.
 In the new environment, you copy the template (cp .env.template .env) and fill in the actual sensitive data locally. This keeps the actual secrets out of the repository while providing clear instructions on what variables are needed [1]. 
+
 2. Use a Secrets Management System
 For professional or team environments, a secrets manager is a secure and scalable solution. 
 Sensitive information is stored in a dedicated, secure system (e.g., AWS Secrets Manager, HashiCorp Vault, CyberArk).
 The new project environment uses API keys or specific credentials to programmatically fetch the correct sftp.json or .env contents at runtime or during a deployment process. 
+
 3. Temporarily Remove from .gitignore (Not Recommended for Secrets) 
 You could technically remove the file from .gitignore, commit it, pull it on the new machine, and then re-add it to .gitignore. However, this is a significant security risk as it exposes sensitive information (credentials, API keys, etc.) in your repository's history forever [1]. Avoid this method for sensitive data. 
 Summary

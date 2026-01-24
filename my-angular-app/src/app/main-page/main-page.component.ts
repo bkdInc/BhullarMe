@@ -7,7 +7,8 @@ import { BioComponent } from "../bio/bio.comopnent";
 import { SkillsComponent } from '../skills/skills.component';
 import { ExperienceComponent } from '../experience/experience.component'; 
 import { ContactUsComponent } from '../contact-us/contact-us.component';    
-
+//import { environment } from '../environments/environment.ts';
+//console.log(environment.cvUrl);
 
 
 @Component({

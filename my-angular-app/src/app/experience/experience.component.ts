@@ -11,6 +11,7 @@ interface ExperienceData {
   company: string;
   location: string;
   description: string;
+  class: string;
 }
 
 
