@@ -7,7 +7,7 @@ import { BioComponent } from "../bio/bio.comopnent";
 import { SkillsComponent } from '../skills/skills.component';
 import { ExperienceComponent } from '../experience/experience.component'; 
 import { ContactUsComponent } from '../contact-us/contact-us.component';    
-//import { environment } from '../environments/environment.ts';
+import { environment } from '../../environments/environment';
 //console.log(environment.cvUrl);
 
 
@@ -16,7 +16,8 @@ import { ContactUsComponent } from '../contact-us/contact-us.component';
   standalone: true,
   imports: [CommonModule, HeaderComponent, AboutComponent, BioComponent,SkillsComponent,ExperienceComponent,ContactUsComponent, FooterComponent],
   templateUrl: "./main-page.html",
-  //styleUrl: "./main-page.component.css", 
-
+  //styleUrls: './main-page.component.css', 
 })
-export class MainPageComponent {}
+export class MainPageComponent {
+  cvUrl = environment.cvUrl; 
+}

@@ -8,7 +8,7 @@ console.log(environment.cvUrl);
   standalone: true,
   imports: [RouterOutlet],
   template: '<router-outlet></router-outlet>',
-  //styleUrls: ['./app.component.css']
+ // styleUrls: './main-page.component.css',
 })
 export class AppComponent {
   title = 'my-angular-app';

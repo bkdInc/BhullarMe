@@ -3,22 +3,41 @@
           <h6 class="section-title">Contact</h6>
         <h1>Call or write <span class="green">anytime</span></h1>
         <div class="row">
-          <div class=" form col-md-7 col-lg-8">
-              <form id="contact-form" action="" method="post">
+          <div class="form col-md-7 col-lg-8">
+              <form [formGroup]="form" (ngSubmit)="onSubmit()" id="form">
                 <div class="form-group">
-                  <label for="name">Full name</label>
-                  <input type="text" class="form-control" id="name" placeholder="">
+                  <input formControlName="name" placeholder="Your name" class="form-control">
+                   <small *ngIf="form.controls.name.invalid && (form.controls.name.dirty || form.controls.name.touched || submitted)">
+                     <span *ngIf="form.controls.name.errors?.['required']">Name is required.</span>
+                     <span *ngIf="form.controls.name.errors?.['minlength']">Min 3 characters.</span>
+                 </small>
                 </div>
                 <div class="form-group">
-                  <label for="email">E-mail Address</label>
-                  <input type="email" class="form-control" id="email" placeholder="">
+                  <input formControlName="email" type="email" class="form-control" placeholder="Your email">
+                    <small *ngIf="form.controls.email.invalid && (form.controls.email.dirty || form.controls.email.touched || submitted)">
+                     <span *ngIf="form.controls.email.errors?.['required']">Email is required.</span>
+                     <span *ngIf="form.controls.email.errors?.['email']">Email must be valid.</span>
+                   </small>
                 </div>
                 <div class="form-group">
-                  <label for="email">Message</label>
-                  <textarea class="form-control" id="Message" placeholder=""></textarea>
+                   <textarea formControlName="message" class="form-control" id="Message" placeholder=""></textarea>
+                    <small *ngIf="form.controls.message.invalid && (form.controls.message.dirty || form.controls.message.touched || submitted)">
+                     <span *ngIf="form.controls.message.errors?.['required']">Message is required.</span>
+                     <span *ngIf="form.controls.message.errors?.['minlength']">Min 10 characters.</span>
+                 </small>
                 </div>
-                <button type="submit" class="btn btn-success py-2 px-">Send message</button>
+                <div class="form-group">
+                  <label style="align-items:center; grid-auto-flow: column; justify-content: start;">
+                  <input type="checkbox" formControlName="newsletter" />
+                     Subscribe to newsletter
+                   </label>
+                </div>
+                <button type="submit" [disabled]="form.invalid" class="btn btn-success py-2 px-">Submit</button>
+                
               </form>
+             <!-- <p>Status: {{ form.status }}</p>
+              <p>Value: {{ form.value | json }}</p> -->
+              <p *ngIf="submitted" style="color: seagreen;">Form Submitted!</p>
           </div>
           <div class="img col-md-5 col-lg-4">
             <img src="/assets/img/photo-contact.jpg" alt="">

@@ -19,8 +19,8 @@ How to Push to Git
 2> git commit -m "Your descriptive commit message"
 3> git push origin main
 
-how to Publish
-
+How to Publish
+npm run build
 
 Step-by-Step Guide
 Open the Integrated Terminal in VS Code:
@@ -42,19 +42,23 @@ Pubslish Code
 
 To publish code from Visual Studio Code (VS Code) to an online website, you generally use an extension specific to your hosting service or a generic method like FTP/FTPS or Git-based deployment. VS Code itself is an editor and does not have built-in publishing tools for web hosting in the way Visual Studio IDE does. 
 Here are common methods for publishing your code:
+
 Method 1: Using Platform-Specific Extensions (Recommended) 
+
 Many hosting providers offer dedicated VS Code extensions that streamline the deployment process. 
 Microsoft Azure: The Azure App Service extension allows you to create and deploy web apps directly to Azure with a few clicks. The free tier for personal projects is very generous.
 GitHub Pages: For static websites (HTML, CSS, JavaScript only), you can use the built-in "Publish to GitHub" command to create a repository and then configure GitHub Pages to host it for free.
 Other Platforms (e.g., Netlify, Vercel, Render.com): These services also offer simple deployment by linking to your GitHub repository. While they may not have official VS Code extensions for direct deployment, you can push your code to a GitHub repo using VS Code's source control features, and the hosting service will automatically deploy it. 
 
 Method 2: Using FTP/FTPS Extension
+
 If your hosting provider offers FTP/FTPS access, you can use an extension like "ftp-sync" or "Remote - FTP" to upload your files. 
 Install the Extension: Go to the Extensions view (Ctrl+Shift+X) and search for an FTP extension.
 Configure Settings: You'll need your host's FTP details (server address, username, password, port) from your hosting control panel.
 Deploy: Use the extension's commands to connect to your server and upload your project files. 
 
 Method 3: Manual Deployment (Using a Build Folder)
+
 For projects that require a build step (like React, Angular, or Node.js with Express), you often need to generate the static files first. 
 Run a Build Command: Open the integrated terminal in VS Code (Ctrl+) and run your project's build command (e.g., npm run buildordotnet publish). This creates a publishorbuild` folder containing the deployable assets.
 Upload Files: Manually upload the contents of this output folder to your web host's server using one of the methods above (e.g., FTP client, command line tools, or a deployment extension). 
@@ -108,3 +112,15 @@ Consider a Secrets Management Service: For more complex applications, use a dedi
 Audit and Remove Leaked Credentials: If you accidentally push credentials, you must treat them as compromised immediately. Remove them from your repository's history (a non-trivial process) and invalidate/rotate the credentials in the service they are for. GitHub provides a useful guide on removing sensitive data from a repository. 
 
 Never commit any sensitive information, including passwords, API keys, or security tokens, to a public repository. 
+
+
+STUDY NOTES
+
+In template-driven forms, the form model is implicit, rather than explicit. 
+Two approaches: Template-driven (HTML-first with [(ngModel)]) and Reactive (code-first with FormGroup/FormControl).
+In template-driven forms, directives are used to create and manage the form controls directly in the HTML template.
+Common directives include ngModel, ngForm, and ngSubmit.
+Imports: FormsModule (template-driven) and ReactiveFormsModule (reactive).
+ReactiveFormsModule (Reactive Forms) is the superior choice for high-scale, complex, or enterprise-level Angular applications. 
+It offers synchronous data flows, explicit immutability, better testability, and superior control over complex validation logic compared to Template-Driven Forms.
+It is ideal for dynamic forms and large-scale applications

@@ -476,7 +476,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #contact .img {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 #contact .img img {
@@ -627,7 +627,7 @@ footer .copyright p a:hover {
     left: 100%;
   }
   #experience .jobs .fourth {
-    padding-bottom: 150px;
+    padding-bottom: 60px;
   }
   #contact {
     margin-top: 0px;
@@ -754,7 +754,7 @@ footer .copyright p a:hover {
             justify-content: space-between;
     padding-right: 80px;
     position: absolute;
-    bottom: 100px;
+    bottom: 50px;
   }
 }
 /*# sourceMappingURL=main.css.map */
