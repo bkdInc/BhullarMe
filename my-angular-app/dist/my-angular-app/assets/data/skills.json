@@ -1,8 +1,0 @@
-[
-  { "id": 1, "name": "Strategic & Leadership", "value": 85 },
-  { "id": 2, "name": "TMS & ERP", "value": 95 },
-  { "id": 3, "name": "Data Analysis", "value": 95 },
-  { "id": 4, "name": "Compliance & Safety", "value": 95 },
-  { "id": 5, "name": "Technology Implementation", "value": 95 },
-  { "id": 6, "name": "Data Analysis & Reporting", "value": 95 }
-]
