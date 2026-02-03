@@ -1,7 +1,26 @@
-# .gitignore file
-.env
-sftp.json
+How to Build & Deploy Backend
 
+1. Development (Local):
+   cd e:\GitHub\BhullarMe\backend
+   npm run dev
+
+2. Build for Production:
+   npm run build          # Compiles TypeScript
+   
+3. Deploy to Railway/Render:
+   - Push to GitHub
+   - Platform auto-builds using npm install && npm run build
+   - Starts with npm start
+
+4. Deploy to GoDaddy VPS (if applicable):
+   npm install
+   npm run build
+   pm2 start dist/server.js --name backend
+
+5. Run Node Server
+   node server.ts
+   
+   
 # Command for Git Push to Git from Terminal
 
 Call & Put  Videos
@@ -19,7 +38,7 @@ How to Push to Git
 2> git commit -m "Your descriptive commit message"
 3> git push origin main
 
-How to Publish
+How to Publish for Deployment
 npm run build
 
 
@@ -126,13 +145,3 @@ Audit and Remove Leaked Credentials: If you accidentally push credentials, you m
 Never commit any sensitive information, including passwords, API keys, or security tokens, to a public repository. 
 
 
-STUDY NOTES
-
-In template-driven forms, the form model is implicit, rather than explicit. 
-Two approaches: Template-driven (HTML-first with [(ngModel)]) and Reactive (code-first with FormGroup/FormControl).
-In template-driven forms, directives are used to create and manage the form controls directly in the HTML template.
-Common directives include ngModel, ngForm, and ngSubmit.
-Imports: FormsModule (template-driven) and ReactiveFormsModule (reactive).
-ReactiveFormsModule (Reactive Forms) is the superior choice for high-scale, complex, or enterprise-level Angular applications. 
-It offers synchronous data flows, explicit immutability, better testability, and superior control over complex validation logic compared to Template-Driven Forms.
-It is ideal for dynamic forms and large-scale applications
