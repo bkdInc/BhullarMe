@@ -60,8 +60,16 @@ app.get('/', (req, res) => {
   res.status(200).json({ message: 'Backend API is running' });
 });
 
-// Health check endpoint
+// Health check endpoints (multiple for compatibility)
 app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'OK', message: 'Backend is running' });
+});
+
+app.get('/api-health', (req, res) => {
+  res.status(200).json({ status: 'OK', message: 'Backend is running' });
+});
+
+app.get('/health', (req, res) => {
   res.status(200).json({ status: 'OK', message: 'Backend is running' });
 });
 
