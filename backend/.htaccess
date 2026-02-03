@@ -1,0 +1,19 @@
+# Enable Node.js application
+PassengerEnabled on
+PassengerAppRoot /home/c9pp72khbpn7/public_html/backend
+PassengerAppType node
+PassengerStartupFile dist/server.js
+
+# Node.js version (check with GoDaddy what versions are available)
+PassengerNodejs /usr/bin/node
+
+# Environment
+PassengerAppEnv production
+
+# Enable rewrite engine
+RewriteEngine On
+
+# Redirect all requests to the Node.js app
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ dist/server.js [L]

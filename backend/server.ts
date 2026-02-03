@@ -13,7 +13,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-app.use(cors());
+
+// CORS configuration for production
+app.use(cors({
+  origin: process.env.FRONTEND_URL || 'http://localhost:4200',
+  credentials: true
+}));
+
 app.use(bodyParser.json());
 
 const transporter = nodemailer.createTransport({
@@ -31,6 +37,16 @@ transporter.verify((error, success) => {
   } else {
     console.log('Email server is ready');
   }
+});
+
+// Root endpoint
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'Backend API is running' });
+});
+
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'OK', message: 'Backend is running' });
 });
 
 app.post('/api/send-email', async (req, res) => {

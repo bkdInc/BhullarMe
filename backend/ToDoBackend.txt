@@ -1,0 +1,26 @@
+Quick Steps:
+
+Check your GoDaddy plan - Node.js requires Business Hosting or VPS (not Economy/Deluxe)
+Upload files: dist/, EmailTemp/, node_modules/, package.json, .htaccess, and .env
+Set up in cPanel: Use "Setup Node.js App" with startup file dist/server.js (IMPORTANT: include dist/)
+Configure environment variables in cPanel or .env file
+Test: Visit https://yourdomain.com/api/health
+
+FIXING 404 ERROR ON GODADDY:
+1. In cPanel > Setup Node.js App, make sure:
+   - Application startup file: dist/server.js (not just server.js)
+   - Application mode: Production
+   - Click "Restart" after any changes
+
+2. Make sure node_modules are installed on the server:
+   - SSH into server or use terminal in cPanel
+   - cd to your backend directory
+   - Run: npm install --production
+
+3. Check the Application URL in cPanel matches where you're accessing it
+
+4. If still getting 404, the issue is likely:
+   - Node.js app not started/running in cPanel
+   - Wrong Application Root path in cPanel
+   - Missing .htaccess or .htaccess not being read
+
