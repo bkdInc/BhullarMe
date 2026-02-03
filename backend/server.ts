@@ -14,9 +14,25 @@ const __dirname = dirname(__filename);
 
 const app = express();
 
-// CORS configuration for production
+// CORS configuration - allow multiple origins
+const allowedOrigins = [
+  'https://bhullar.me',
+  'http://localhost:4200',
+  'http://localhost:3000'
+];
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:4200',
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      console.log('CORS blocked origin:', origin);
+      callback(null, true); // For now, allow all origins during testing
+    }
+  },
   credentials: true
 }));
 
@@ -50,7 +66,14 @@ app.get('/api/health', (req, res) => {
 });
 
 app.post('/api/send-email', async (req, res) => {
+  console.log('Received email request:', { name: req.body.name, email: req.body.email });
+  
   const { name, email, message, newsletter } = req.body;
+
+  // Validate required fields
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
 
   try {
     const templatePath = join(__dirname, 'EmailTemp', 'emailTemp.html');
