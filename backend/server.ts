@@ -84,7 +84,9 @@ app.post('/api/send-email', async (req, res) => {
   }
 
   try {
-    const templatePath = join(__dirname, 'EmailTemp', 'emailTemp.html');
+    // EmailTemp is in the parent directory of dist
+    const templatePath = join(__dirname, '..', 'EmailTemp', 'emailTemp.html');
+    console.log('Looking for template at:', templatePath);
     let htmlTemplate = readFileSync(templatePath, 'utf8');
 
     const finalHtml = htmlTemplate
