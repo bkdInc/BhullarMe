@@ -39,11 +39,16 @@ app.use(cors({
 app.use(bodyParser.json());
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true, // use SSL
   auth: {
     user: process.env.USER,
     pass: process.env.APP_PASSWORD
-  }
+  },
+  connectionTimeout: 10000, // 10 seconds
+  greetingTimeout: 10000,
+  socketTimeout: 20000
 });
 
 // Test email connection on startup (keep this for production monitoring)
