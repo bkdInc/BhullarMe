@@ -1,5 +1,5 @@
 import express from 'express';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import { fileURLToPath } from 'url';
@@ -38,27 +38,14 @@ app.use(cors({
 
 app.use(bodyParser.json());
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true, // use SSL
-  auth: {
-    user: process.env.USER,
-    pass: process.env.APP_PASSWORD
-  },
-  connectionTimeout: 10000, // 10 seconds
-  greetingTimeout: 10000,
-  socketTimeout: 20000
-});
+// Initialize Resend
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Test email connection on startup (keep this for production monitoring)
-transporter.verify((error, success) => {
-  if (error) {
-    console.error('Email transporter error:', error);
-  } else {
-    console.log('Email server is ready');
-  }
-});
+if (!process.env.RESEND_API_KEY) {
+  console.error('RESEND_API_KEY is not set!');
+} else {
+  console.log('Resend email service configured');
+}
 
 // Root endpoint
 app.get('/', (req, res) => {
@@ -108,17 +95,22 @@ app.post('/api/send-email', async (req, res) => {
       html: finalHtml
     };
 
-    console.log('Attempting to send email...');
+    console.log('Attempting to send email with Resend...');
     
-    // Add timeout to email sending
-    const sendMailPromise = transporter.sendMail(mailOptions);
-    const timeoutPromise = new Promise((_, reject) => 
-      setTimeout(() => reject(new Error('Email sending timeout after 30s')), 30000)
-    );
+    // Send with Resend (fast and reliable for cloud hosting)
+    const { data, error: resendError } = await resend.emails.send({
+      from: 'Contact Form <onboarding@resend.dev>', // Resend verified sender
+      to: [process.env.EMAIL_FROM || 'your-email@gmail.com'],
+      reply_to: email, // User's email for replies
+      subject: `Bhullar Me - Contact Form from ${name}`,
+      html: finalHtml
+    });
     
-    await Promise.race([sendMailPromise, timeoutPromise]);
+    if (resendError) {
+      throw resendError;
+    }
     
-    console.log('Email sent successfully');
+    console.log('Email sent successfully via Resend:', data);
     res.status(200).json({ message: 'Email sent successfully (HB)' });
   } catch (error: any) {
     console.error('Email error:', error);
