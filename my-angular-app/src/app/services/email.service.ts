@@ -17,7 +17,7 @@ export class EmailService
   {
     console.log('Sending email to:', this.apiUrl);  // Debug log
     return this.http.post(this.apiUrl, formData).pipe(
-      timeout(60000) // 60 second timeout
+      timeout(90000) // 90 second timeout for cold starts
     );
   }
 }

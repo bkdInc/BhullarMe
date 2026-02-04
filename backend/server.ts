@@ -88,6 +88,7 @@ app.post('/api/send-email', async (req, res) => {
     const templatePath = join(__dirname, '..', 'EmailTemp', 'emailTemp.html');
     console.log('Looking for template at:', templatePath);
     let htmlTemplate = readFileSync(templatePath, 'utf8');
+    console.log('Template loaded successfully');
 
     const finalHtml = htmlTemplate
       .replace('{{name}}', name)
@@ -102,11 +103,22 @@ app.post('/api/send-email', async (req, res) => {
       html: finalHtml
     };
 
-    await transporter.sendMail(mailOptions);
+    console.log('Attempting to send email...');
+    
+    // Add timeout to email sending
+    const sendMailPromise = transporter.sendMail(mailOptions);
+    const timeoutPromise = new Promise((_, reject) => 
+      setTimeout(() => reject(new Error('Email sending timeout after 30s')), 30000)
+    );
+    
+    await Promise.race([sendMailPromise, timeoutPromise]);
+    
+    console.log('Email sent successfully');
     res.status(200).json({ message: 'Email sent successfully (HB)' });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Email error:', error);
-    res.status(500).json({ error: 'Failed to send email (HB)' });
+    console.error('Error details:', error.message, error.code);
+    res.status(500).json({ error: 'Failed to send email (HB)', details: error.message });
   }
 });
 
