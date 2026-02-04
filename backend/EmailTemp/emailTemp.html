@@ -9,45 +9,73 @@
     <o:PixelsPerInch>96</o:PixelsPerInch>
    </o:OfficeDocumentSettings>
   </xml><![endif]-->
-  <!-- fix outlook zooming on 120 DPI windows devices -->
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- So that mobile will display zoomed in -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- enable media queries for windows phone 8 -->
-  <meta name="format-detection" content="date=no"> <!-- disable auto date linking in iOS 7-9 -->
-  <meta name="format-detection" content="telephone=no"> <!-- disable auto telephone linking in iOS 7-9 -->
-  <title>Bhullar Me | Email Newsletter Subscription</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <link rel="stylesheet" type="text/css" href="responsive.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Bhullar Me | Contact Form</title>
+  <style type="text/css">
+    /* Client-specific Styles */
+    body { margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+    table { border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    table td { border-collapse: collapse; }
+    img { -ms-interpolation-mode: bicubic; }
+    
+    /* Responsive */
+    @media screen and (max-width: 599px) {
+      .container { width: 100% !important; }
+      .container-padding { padding-left: 16px !important; padding-right: 16px !important; }
+    }
+  </style>
 </head>
-<body style="margin:0; padding:0;" bgcolor="#F0F0F0" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<body style="margin:0; padding:0; background-color:#F0F0F0;">
 
-<!-- 100% background wrapper (grey background) -->
-<table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0">
+<!-- 100% background wrapper -->
+<table border="0" width="100%" cellpadding="0" cellspacing="0" style="background-color:#F0F0F0;">
   <tr>
-    <td align="center" valign="top" bgcolor="#F0F0F0" style="background-color: #F0F0F0;">
+    <td align="center" valign="top" style="padding: 20px 0;">
 
-      <br>
-
-      <!-- 600px container (white background) -->
-      <table border="0" width="600" cellpadding="0" cellspacing="0" class="container">
+      <!-- 600px container -->
+      <table border="0" width="600" cellpadding="0" cellspacing="0" class="container" style="max-width:600px; width:600px;">
+        <!-- Header -->
         <tr>
-          <td class="container-padding header" align="left">
+          <td align="left" style="padding:24px; font-family:Helvetica,Arial,sans-serif; font-size:24px; font-weight:bold; color:#DF4726;">
             Bhullar Me 
           </td>
         </tr>
+        <!-- Content -->
         <tr>
-          <td class="container-padding content" align="left">
-            <br>
-<div class="title">Welcome {{name}}</div>
-<br>
+          <td align="left" style="padding:24px; background-color:#ffffff;">
+            
+            <div style="font-family:Helvetica,Arial,sans-serif; font-size:18px; font-weight:600; color:#374550; margin-bottom:20px;">
+              Welcome {{name}}
+            </div>
 
-<div class="body-text">
-  <b>Your Message :</b> {{message}} <br><br>
-  Subscription Status: {{newsletter}}
-  <br><br>
-  Stay ahead of the curve with Bhullar Me! Subscribe to our newsletter for the latest updates, exclusive content, and special offers delivered straight to your inbox.
-  <br><br>
-</div>
+            <div style="font-family:Helvetica,Arial,sans-serif; font-size:14px; line-height:20px; color:#333333;">
+              <p style="margin:0 0 15px 0;"><strong>From:</strong> {{email}}</p>
+              <p style="margin:0 0 15px 0;"><strong>Message:</strong></p>
+              <p style="margin:0 0 15px 0;">{{message}}</p>
+              <p style="margin:0 0 15px 0;"><strong>Newsletter Subscription:</strong> {{newsletter}}</p>
+              <hr style="border:0; border-bottom:1px solid #cccccc; margin:20px 0;">
+              <p style="margin:0;">Thank you for contacting Bhullar Me! We've received your message and will get back to you soon.</p>
+            </div>
+
+          </td>
+        </tr>
+        <!-- Footer -->
+        <tr>
+          <td align="center" style="padding:24px; font-family:Helvetica,Arial,sans-serif; font-size:12px; line-height:16px; color:#aaaaaa;">
+            © 2026 Bhullar Me. All rights reserved.<br>
+            <a href="https://bhullar.me" style="color:#aaaaaa; text-decoration:none;">bhullar.me</a>
+          </td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
 
 <div class="hr">&nbsp;</div>
 <br>
